@@ -3,8 +3,12 @@ set $mod Mod4
 # --------------------------------- Load Additional Configuration Files ---------------------------------
 include /etc/sway/config.d/*
 
-# --------------------------------- Floating Modifier ---------------------------------
+# --------------------------------- Other ---------------------------------
 floating_modifier $mod
+
+default_border pixel 2
+
+default_floating_border pixel 2
 
 # --------------------------------- Client Colors ---------------------------------
 client.focused          #000000 #000000 #000000 #000000
@@ -27,6 +31,7 @@ bar {
         urgent_workspace   #ffffff #ffffff #ffffff
     }
     status_command ~/.config/sway/sway_status.sh
+    mode dock
 }
 
 # --------------------------------- Startup Commands ---------------------------------
