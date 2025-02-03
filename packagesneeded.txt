@@ -1,9 +1,9 @@
 sway
-swaybg
 kitty
 pamixer
 grim
 slurp
+wl-copy
 wf-recorder
 xdg-desktop-portal-wlr
 gnome-keyring
@@ -12,6 +12,4 @@ curl
 jq
 procps-ng
 libnotify
-zsh
-bash
-gnu-free-fonts
+wlrctl
