@@ -1,0 +1,16 @@
+sway
+swaybg
+kitty
+pamixer
+grim
+slurp
+wl-copy
+wf-recorder
+xdg-desktop-portal-wlr
+gnome-keyring
+glib2
+curl
+jq
+procps-ng
+libnotify
+wlrctl
