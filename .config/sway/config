@@ -6,9 +6,6 @@ include /etc/sway/config.d/*
 # --------------------------------- Floating Modifier ---------------------------------
 floating_modifier $mod
 
-# --------------------------------- Background ---------------------------------
-exec_always swaybg -o '*' -c '#000000'
-
 # --------------------------------- Client Colors ---------------------------------
 client.focused          #000000 #000000 #000000 #000000
 client.focused_inactive #000000 #000000 #000000 #000000
@@ -39,7 +36,7 @@ exec_always export GTK_USE_PORTAL=0
 exec export XDG_CURRENT_DESKTOP=sway
 exec export XDG_SESSION_TYPE=wayland
 exec export XDG_PORTAL_BACKEND=wlroots
-
+exec mpvpaper '*' ~/.wallpaper/wall.mp4 --mpv-options="--loop"
 # --------------------------------- GTK Configuration ---------------------------------
 exec {
     gsettings set org.gtk.Settings.FileChooser window-size '(1000, 500)'
