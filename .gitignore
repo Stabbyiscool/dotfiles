@@ -1,6 +1,11 @@
 *
+
 !.zshrc
+
 !.config/
+.config/*
+
 !.config/sway/
+!.config/sway/*
+
 !.gitignore
-!readme.md
