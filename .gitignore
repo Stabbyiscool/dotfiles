@@ -11,3 +11,5 @@
 !.themes/
 !.themes/*
 !.gitignore
+!.themes/MonoThemeDark/
+!.themes/MonoThemeDark/*
