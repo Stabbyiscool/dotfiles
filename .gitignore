@@ -2,4 +2,5 @@
 !.zshrc
 !.config/
 !.config/sway/
+!.gitignore
 !readme.md
