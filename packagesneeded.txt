@@ -12,4 +12,5 @@ curl
 jq
 procps-ng
 libnotify
-
+zsh
+bash
