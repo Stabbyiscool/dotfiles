@@ -14,3 +14,4 @@ procps-ng
 libnotify
 zsh
 bash
+gnu-free-fonts
