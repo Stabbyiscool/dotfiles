@@ -1,0 +1,115 @@
+set $mod Mod4
+
+# --------------------------------- Load Additional Configuration Files ---------------------------------
+include /etc/sway/config.d/*
+
+# --------------------------------- Floating Modifier ---------------------------------
+floating_modifier $mod
+
+# --------------------------------- Background ---------------------------------
+exec_always swaybg -o '*' -c '#000000'
+
+# --------------------------------- Client Colors ---------------------------------
+client.focused          #000000 #000000 #000000 #000000
+client.focused_inactive #000000 #000000 #000000 #000000
+client.unfocused        #000000 #000000 #000000 #000000
+client.urgent           #ffffff #ffffff #ffffff #ffffff
+client.placeholder      #000000 #000000 #000000 #000000
+
+# --------------------------------- Status Bar Configuration ---------------------------------
+bar {
+    position top
+    colors {
+        background #000000
+        statusline #ffffff
+        separator  #ffffff
+
+        focused_workspace  #000000 #ffffff #000000
+        active_workspace   #000000 #ffffff #000000
+        inactive_workspace #ffffff #ffffff #ffffff
+        urgent_workspace   #ffffff #ffffff #ffffff
+    }
+    status_command ~/.config/sway/sway_status.sh
+}
+
+# --------------------------------- Startup Commands ---------------------------------
+exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+exec_always export GTK_USE_PORTAL=0
+exec export XDG_CURRENT_DESKTOP=sway
+exec export XDG_SESSION_TYPE=wayland
+exec export XDG_PORTAL_BACKEND=wlroots
+
+# --------------------------------- GTK Configuration ---------------------------------
+exec {
+    gsettings set org.gtk.Settings.FileChooser window-size '(1000, 500)'
+    gsettings set org.gnome.desktop.interface gtk-theme 'MonoThemeDark'
+    gsettings set org.gnome.desktop.interface.wm.preferences theme 'MonoThemeDark'
+    gsettings set org.gnome.desktop.interface cursor-size '24'
+    gsettings set org.gnome.desktop.interface font-name 'Roboto Slab 10'
+}
+
+# --------------------------------- Workspace Definitions ---------------------------------
+set $workspace1 1
+set $workspace2 2
+set $workspace3 3
+set $workspace4 4
+set $workspace5 5
+set $workspace6 6
+set $workspace7 7
+set $workspace8 8
+set $workspace9 9
+set $workspace10 10
+
+# --------------------------------- Output Configuration ---------------------------------
+output "UGD Artist15.6Pro 20200316" pos 0 0 res 1920x1080
+workspace $workspace1 output "UGD Artist15.6Pro 20200316"
+
+output "Acer Technologies KA242Y 0x02411605" pos 1920 0 res 1920x1080
+workspace $workspace2 output "Acer Technologies KA242Y 0x02411605"
+
+output "Acer Technologies R240HY 1224090C42421" pos 3840 0 res 1920x1080
+workspace $workspace3 output "Acer Technologies R240HY 1224090C42421"
+
+# --------------------------------- Input Configuration ---------------------------------
+input "10429:2317:UGTABLET_15.6_inch_PenDisplay_Stylus" {
+    map_to_output HDMI-A-1
+    drag disabled
+}
+
+# --------------------------------- Workspace Keybindings ---------------------------------
+bindsym $mod+1 workspace number $workspace1
+bindsym $mod+2 workspace number $workspace2
+bindsym $mod+3 workspace number $workspace3
+bindsym $mod+4 workspace number $workspace4
+bindsym $mod+5 workspace number $workspace5
+bindsym $mod+6 workspace number $workspace6
+bindsym $mod+7 workspace number $workspace7
+bindsym $mod+8 workspace number $workspace8
+bindsym $mod+9 workspace number $workspace9
+bindsym $mod+0 workspace number $workspace10
+
+# --------------------------------- Move Containers to Workspaces ---------------------------------
+bindsym $mod+Shift+1 move container to workspace number $workspace1
+bindsym $mod+Shift+2 move container to workspace number $workspace2
+bindsym $mod+Shift+3 move container to workspace number $workspace3
+bindsym $mod+Shift+4 move container to workspace number $workspace4
+bindsym $mod+Shift+5 move container to workspace number $workspace5
+bindsym $mod+Shift+6 move container to workspace number $workspace6
+bindsym $mod+Shift+7 move container to workspace number $workspace7
+bindsym $mod+Shift+8 move container to workspace number $workspace8
+bindsym $mod+Shift+9 move container to workspace number $workspace9
+bindsym $mod+Shift+0 move container to workspace number $workspace10
+
+# --------------------------------- Application and Utility Keybindings ---------------------------------
+bindsym $mod+Q exec kitty
+bindsym $mod+Return exec kitty
+bindsym $mod+c kill
+bindsym $mod+Shift+s exec bash -c 'file_path=~/screenshot/screenshot-$(date +%Y%m%d%H%M%S).png && grim -g "$(slurp)" $file_path && wl-copy < $file_path'
+bindsym $mod+Shift+escape exec "swaymsg exit"
+bindsym $mod+Up exec pamixer --increase 5
+bindsym $mod+Down exec pamixer --decrease 5
+bindsym $mod+Shift+c reload
+bindsym Mod4+Shift+o exec ~/.config/sway/autoclicker.sh left
+bindsym Mod4+Shift+p exec ~/.config/sway/autoclicker.sh right
+bindsym $mod+Shift+r exec --no-startup-id bash -c 'if pgrep -x "wf-recorder" > /dev/null; then killall wf-recorder; else wf-recorder -g "$(slurp)" -f "/home/stabosa/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor; fi'
