@@ -1,0 +1,13 @@
+*
+
+!.zshrc
+
+!.config/
+.config/*
+
+!.config/sway/
+!.config/sway/*
+
+!.themes/
+!.themes/*
+!.gitignore

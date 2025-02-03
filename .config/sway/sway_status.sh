@@ -11,7 +11,7 @@ while true; do
     if [ "$RESPONSE" != "200" ]; then
         ERROR_MSG=$(curl -s https://stabosa.fun | grep -oP '(?<=<title>).*?(?=</title>)')
         echo "MAKAN SERVERS ARE DOWN! ${ERROR_MSG:-No response or timeout.}"
-        sleep 1
+        sleep 5
         continue
     fi
 
