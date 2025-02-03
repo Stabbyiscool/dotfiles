@@ -11,3 +11,5 @@
 !.gitignore
 !readme.md
 !packagesneeded.txt
+!.wallpaper/*
+!.wallpaper/
