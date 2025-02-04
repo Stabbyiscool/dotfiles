@@ -13,3 +13,5 @@
 !packagesneeded.txt
 !.wallpaper/
 !.wallpaper/*
+!.config/neofetch/
+!.config/neofetch/*

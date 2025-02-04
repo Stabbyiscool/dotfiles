@@ -13,3 +13,4 @@ jq
 procps-ng
 libnotify
 wlrctl
+neofetch

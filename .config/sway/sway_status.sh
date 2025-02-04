@@ -7,7 +7,7 @@ while true; do
     CPU=$(top -bn1 | grep "Cpu(s)" | awk '{printf "%.1f%%", $2 + $4}')
     REC=$(pgrep -x "wf-recorder" > /dev/null && echo "RECORDING!")
 
-    RESPONSE=$(curl -s -m 5 -w "%{http_code}" -o /dev/null https://stabosa.fun)
+    RESPONSE=$(curl -s -m 10 -w "%{http_code}" -o /dev/null https://stabosa.fun)
     if [ "$RESPONSE" != "200" ]; then
         ERROR_MSG=$(curl -s https://stabosa.fun | grep -oP '(?<=<title>).*?(?=</title>)')
         echo "MAKAN SERVERS ARE DOWN! ${ERROR_MSG:-No response or timeout.}"
