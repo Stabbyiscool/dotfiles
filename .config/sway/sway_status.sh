@@ -9,9 +9,8 @@ while true; do
 
     RESPONSE=$(curl -s -m 10 -w "%{http_code}" -o /dev/null https://stabosa.fun)
     if [ "$RESPONSE" != "200" ]; then
-        ERROR_MSG=$(curl -s https://stabosa.fun | grep -oP '(?<=<title>).*?(?=</title>)')
-        echo "MAKAN SERVERS ARE DOWN! ${ERROR_MSG:-No response or timeout.}"
-        sleep 5
+        echo "MAKAN SERVERS ARE DOWN!"
+        sleep 1
         continue
     fi
 
