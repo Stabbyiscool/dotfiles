@@ -8,9 +8,10 @@ while true; do
     REC=$(pgrep -x "wf-recorder" > /dev/null && echo "RECORDING!")
 
     RESPONSE=$(curl -s -m 10 -w "%{http_code}" -o /dev/null https://stabosa.fun)
-    if [ "$RESPONSE" != "200" ]; then
-        echo "MAKAN SERVERS ARE DOWN!"
-        sleep 1
+
+    if [[ "$RESPONSE" -lt 200 || "$RESPONSE" -ge 300 ]]; then
+        echo "MAKAN SERVERS ARE DOWN! $RESPONSE"
+        sleep 5
         continue
     fi
 
