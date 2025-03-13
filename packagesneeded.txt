@@ -12,3 +12,4 @@ jq
 procps-ng
 wlrctl
 neofetch
+darkman
