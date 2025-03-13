@@ -3,14 +3,12 @@ kitty
 pamixer
 grim
 slurp
-wl-copy
+wl-clipboard
 wf-recorder
-xdg-desktop-portal-wlr
 gnome-keyring
 glib2
 curl
 jq
 procps-ng
-libnotify
 wlrctl
 neofetch

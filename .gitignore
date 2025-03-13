@@ -15,3 +15,5 @@
 !.wallpaper/*
 !.config/neofetch/
 !.config/neofetch/*
+!.config/wofi/
+!.config/wofi/*

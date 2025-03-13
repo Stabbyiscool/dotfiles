@@ -19,6 +19,7 @@ client.placeholder      #000000 #000000 #000000 #000000
 
 # --------------------------------- Status Bar Configuration ---------------------------------
 bar {
+    font pango:monospace 10
     position top
     colors {
         background #000000
@@ -79,6 +80,10 @@ input "10429:2317:UGTABLET_15.6_inch_PenDisplay_Stylus" {
     drag disabled
 }
 
+input "type:mouse" {
+    pointer_accel 0.5
+}
+
 # --------------------------------- Workspace Keybindings ---------------------------------
 bindsym $mod+1 workspace number $workspace1
 bindsym $mod+2 workspace number $workspace2
@@ -114,4 +119,7 @@ bindsym $mod+Down exec pamixer --decrease 5
 bindsym $mod+Shift+c reload
 bindsym Mod4+Shift+o exec ~/.config/sway/autoclicker.sh left
 bindsym Mod4+Shift+p exec ~/.config/sway/autoclicker.sh right
-bindsym $mod+Shift+r exec --no-startup-id bash -c 'if pgrep -x "wf-recorder" > /dev/null; then killall wf-recorder; else wf-recorder -g "$(slurp)" -f "/home/stabosa/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor; fi'
+bindsym $mod+Shift+r exec bash -c 'if pgrep -x "wf-recorder" > /dev/null; then killall wf-recorder; else wf-recorder -g "$(slurp)" -f "/home/stabosa/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor; fi'
+bindsym $mod+r exec wofi --show drun --width 400 --height 500 --location 1 --xoffset 0 --yoffset 0
+bindsym Ctrl+Shift+Alt+Mod4+L exec flatpak run io.github.ungoogled_software.ungoogled_chromium https://www.linkedin.com
+
