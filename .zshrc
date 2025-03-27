@@ -7,3 +7,5 @@ HISTFILE=~/.zsh_history
 export XDG_CURRENT_DESKTOP=sway
 export XDG_PORTAL_BACKEND=wlroots
 export GTK_THEME=MonoThemeDark
+export RADV_ENABLE_VIDDEC=1
+export NIMBLE_DIR=~/.nimble
