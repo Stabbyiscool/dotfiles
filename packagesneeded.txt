@@ -10,6 +10,5 @@ glib2
 curl
 jq
 procps-ng
-wlrctl
 neofetch
 darkman
