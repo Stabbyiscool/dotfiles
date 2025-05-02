@@ -112,7 +112,6 @@ bindsym $mod+Shift+0 move container to workspace number $workspace10
 
 # --------------------------------- Application and Utility Keybindings ---------------------------------
 bindsym $mod+Q exec kitty
-bindsym $mod+Return exec kitty
 bindsym $mod+c kill
 bindsym $mod+Shift+s exec ~/.config/sway/screenshot.sh
 bindsym $mod+Shift+escape exec "swaymsg exit"
@@ -123,4 +122,8 @@ bindsym $mod+Shift+r exec bash -c 'if pgrep -x "wf-recorder" > /dev/null; then k
 bindsym $mod+r exec wofi --show drun --width 400 --height 500 --location 1 --xoffset 0 --yoffset 0
 bindsym Ctrl+Shift+Alt+Mod4+L exec flatpak run io.github.ungoogled_software.ungoogled_chromium https://www.linkedin.com
 bindsym $mod+Shift+q exec "kill -9 $(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .pid')"
-
+bindsym $mod+f floating toggle
+bindsym $mod+h move scratchpad
+bindsym $mod+i scratchpad shown
+for_window [app_id="xpad"] floating enable
+bindsym $mod+n exec xpad
