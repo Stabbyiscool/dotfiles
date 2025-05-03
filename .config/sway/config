@@ -125,6 +125,6 @@ bindsym Ctrl+Shift+Alt+Mod4+L exec flatpak run io.github.ungoogled_software.ungo
 bindsym $mod+Shift+q exec "kill -9 $(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .pid')"
 bindsym $mod+f floating toggle
 bindsym $mod+h move scratchpad
-bindsym $mod+i scratchpad shown
+bindsym $mod+i scratchpad show
 for_window [app_id="xpad"] floating enable
-bindsym $mod+n exec xpad
+bindsym $mod+x exec xpad
