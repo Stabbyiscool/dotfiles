@@ -9,7 +9,7 @@ ZSH_HIGHLIGHT_STYLES[command]='fg=white'
 ZSH_HIGHLIGHT_STYLES[operator]='fg=darkgray'
 ZSH_HIGHLIGHT_STYLES[brace]='fg=darkgray'
 ZSH_HIGHLIGHT_STYLES[back-quote]='fg=darkgray'
-
+ZSH_AUTOSUGGEST_STRATEGY=completion
 setopt prompt_subst
 PS1='%F{white}%n@%m%f
 %F{white}%~%f\$ '
@@ -22,7 +22,6 @@ export XDG_CURRENT_DESKTOP=sway
 export XDG_PORTAL_BACKEND=wlroots
 export GTK_THEME=MonoThemeDark
 export RADV_ENABLE_VIDDEC=1
-export NIMBLE_DIR=~/.nimble
 export EDITOR=nano
 export TERMINAL=kitty
 
@@ -41,3 +40,4 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^[OC' forward-word
 bindkey '^[OD' backward-word 
+
