@@ -13,3 +13,4 @@ procps-ng
 neofetch
 darkman
 xpad
+zsh-syntax-highlighting
