@@ -10,3 +10,5 @@ export XDG_PORTAL_BACKEND=wlroots
 export GTK_THEME=MonoThemeDark
 export RADV_ENABLE_VIDDEC=1
 export NIMBLE_DIR=~/.nimble
+
+if [ -e /home/stabosa/.nix-profile/etc/profile.d/nix.sh ]; then . /home/stabosa/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
