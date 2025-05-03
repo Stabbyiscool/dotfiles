@@ -127,4 +127,4 @@ bindsym $mod+f floating toggle
 bindsym $mod+h move scratchpad
 bindsym $mod+i scratchpad show
 for_window [app_id="xpad"] floating enable
-bindsym $mod+x exec xpad
+bindsym $mod+n exec xpad
