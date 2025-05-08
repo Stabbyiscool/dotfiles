@@ -1,5 +1,7 @@
+# --------------------------------- General Configuration ---------------------------------
 set $mod Mod4
 set $user stabosa
+
 # --------------------------------- Load Additional Configuration Files ---------------------------------
 include /etc/sway/config.d/*
 
@@ -7,7 +9,6 @@ include /etc/sway/config.d/*
 floating_modifier $mod
 
 default_border pixel 2
-
 default_floating_border pixel 2
 
 # --------------------------------- Client Colors ---------------------------------
@@ -19,7 +20,7 @@ client.placeholder      #000000 #000000 #000000 #000000
 
 # --------------------------------- Status Bar Configuration ---------------------------------
 bar {
-    font pango:monospace 10
+    font pango:Noto Sans Mono 10
     position top
     colors {
         background #000000
@@ -43,36 +44,21 @@ exec export XDG_CURRENT_DESKTOP=sway
 exec export XDG_SESSION_TYPE=wayland
 exec export XDG_PORTAL_BACKEND=wlroots
 exec mpvpaper '*' ~/.wallpaper/wall.mp4 --mpv-options="--loop"
+exec bluetoothctl connect 44:73:D6:F8:90:3C
+exec swaysome init 1
 # --------------------------------- GTK Configuration ---------------------------------
 exec {
     gsettings set org.gtk.Settings.FileChooser window-size '(1000, 500)'
     gsettings set org.gnome.desktop.interface gtk-theme 'MonoThemeDark'
     gsettings set org.gnome.desktop.interface.wm.preferences theme 'MonoThemeDark'
     gsettings set org.gnome.desktop.interface cursor-size '24'
-    gsettings set org.gnome.desktop.interface font-name 'Roboto Slab 10'
+    gsettings set org.gnome.desktop.interface font-name 'Noto Sans Mono 10'
 }
-
-# --------------------------------- Workspace Definitions ---------------------------------
-set $workspace1 1
-set $workspace2 2
-set $workspace3 3
-set $workspace4 4
-set $workspace5 5
-set $workspace6 6
-set $workspace7 7
-set $workspace8 8
-set $workspace9 9
-set $workspace10 10
 
 # --------------------------------- Output Configuration ---------------------------------
 output "UGD Artist15.6Pro 20200316" pos 0 0 res 1920x1080
-workspace $workspace1 output "UGD Artist15.6Pro 20200316"
-
 output "Acer Technologies KA242Y 0x02411605" pos 1920 0 res 1920x1080
-workspace $workspace2 output "Acer Technologies KA242Y 0x02411605"
-
 output "Acer Technologies R240HY 1224090C42421" pos 3840 0 res 1920x1080
-workspace $workspace3 output "Acer Technologies R240HY 1224090C42421"
 
 # --------------------------------- Input Configuration ---------------------------------
 input "10429:2317:UGTABLET_15.6_inch_PenDisplay_Stylus" {
@@ -85,30 +71,29 @@ input "5426:178:Razer_Razer_DeathAdder_V3" {
     pointer_accel 0.5
 }
 
-
 # --------------------------------- Workspace Keybindings ---------------------------------
-bindsym $mod+1 workspace number $workspace1
-bindsym $mod+2 workspace number $workspace2
-bindsym $mod+3 workspace number $workspace3
-bindsym $mod+4 workspace number $workspace4
-bindsym $mod+5 workspace number $workspace5
-bindsym $mod+6 workspace number $workspace6
-bindsym $mod+7 workspace number $workspace7
-bindsym $mod+8 workspace number $workspace8
-bindsym $mod+9 workspace number $workspace9
-bindsym $mod+0 workspace number $workspace10
+bindsym $mod+1 exec swaysome focus 1
+bindsym $mod+2 exec swaysome focus 2
+bindsym $mod+3 exec swaysome focus 3
+bindsym $mod+4 exec swaysome focus 4
+bindsym $mod+5 exec swaysome focus 5
+bindsym $mod+6 exec swaysome focus 6
+bindsym $mod+7 exec swaysome focus 7
+bindsym $mod+8 exec swaysome focus 8
+bindsym $mod+9 exec swaysome focus 9
+bindsym $mod+0 exec swaysome focus 10
 
-# --------------------------------- Move Containers to Workspaces ---------------------------------
-bindsym $mod+Shift+1 move container to workspace number $workspace1
-bindsym $mod+Shift+2 move container to workspace number $workspace2
-bindsym $mod+Shift+3 move container to workspace number $workspace3
-bindsym $mod+Shift+4 move container to workspace number $workspace4
-bindsym $mod+Shift+5 move container to workspace number $workspace5
-bindsym $mod+Shift+6 move container to workspace number $workspace6
-bindsym $mod+Shift+7 move container to workspace number $workspace7
-bindsym $mod+Shift+8 move container to workspace number $workspace8
-bindsym $mod+Shift+9 move container to workspace number $workspace9
-bindsym $mod+Shift+0 move container to workspace number $workspace10
+# --------------------------------- Move Containers to Workspace ---------------------------------
+bindsym $mod+Shift+1 exec swaysome move 1
+bindsym $mod+Shift+2 exec swaysome move 2
+bindsym $mod+Shift+3 exec swaysome move 3
+bindsym $mod+Shift+4 exec swaysome move 4
+bindsym $mod+Shift+5 exec swaysome move 5
+bindsym $mod+Shift+6 exec swaysome move 6
+bindsym $mod+Shift+7 exec swaysome move 7
+bindsym $mod+Shift+8 exec swaysome move 8
+bindsym $mod+Shift+9 exec swaysome move 9
+bindsym $mod+Shift+0 exec swaysome move 10
 
 # --------------------------------- Application and Utility Keybindings ---------------------------------
 bindsym $mod+Q exec kitty
@@ -126,5 +111,7 @@ bindsym $mod+Shift+q exec "kill -9 $(swaymsg -t get_tree | jq -r '.. | select(.f
 bindsym $mod+f floating toggle
 bindsym $mod+h move scratchpad
 bindsym $mod+i scratchpad show
+bindsym XF86AudioPlay exec playerctl play-pause && notify-send "Media" "Playing"
+bindsym XF86AudioPause exec playerctl play-pause && notify-send "Media" "Paused"
 for_window [app_id="xpad"] floating enable
 bindsym $mod+n exec xpad
