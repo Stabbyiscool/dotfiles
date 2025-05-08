@@ -2,8 +2,14 @@
 
 while true; do
     VOL=$(pamixer --get-volume-human)
-    RAM=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
-    DATE=$(date +"%Y-%m-%d %H:%M")
+
+    read total _ _ _ _ available < <(free -m | awk '/^Mem:/ {print $2, $3, $4, $5, $6, $7}')
+    used_real=$((total - available))
+    used_gib=$((used_real / 1024))
+    total_gib=$((total / 1024))
+    RAM="${used_gib}GiB/${total_gib}GiB"
+
+    DATE=$(date +"%Y-%m-%d %I:%M %p")
     CPU=$(top -bn1 | grep "Cpu(s)" | awk '{printf "%.1f%%", $2 + $4}')
     REC=$(pgrep -x "wf-recorder" > /dev/null && echo "RECORDING!")
 
