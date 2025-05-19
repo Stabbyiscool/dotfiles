@@ -49,6 +49,7 @@ exec swaysome init 1
 exec swayidle \
     timeout 300 '~/.config/sway/lockscreen.sh' \
     timeout 600 'systemctl suspend'    
+exec sway-audio-idle-inhibit
 # --------------------------------- GTK Configuration ---------------------------------
 exec {
     gsettings set org.gtk.Settings.FileChooser window-size '(1000, 500)'
@@ -101,7 +102,7 @@ bindsym $mod+Shift+0 exec swaysome move 10
 # --------------------------------- Application and Utility Keybindings ---------------------------------
 bindsym $mod+Q exec kitty
 bindsym $mod+c kill
-bindsym $mod+Shift+s exec ~/.config/sway/screenshot.sh
+bindsym $mod+Shift+s exec ~/.config/sway/screenshot.py
 bindsym $mod+Shift+escape exec "swaymsg exit"
 bindsym $mod+Up exec pamixer --increase 5
 bindsym $mod+Down exec pamixer --decrease 5

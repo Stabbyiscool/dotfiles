@@ -17,3 +17,4 @@ zsh-syntax-highlighting
 thunar-archive-plugin
 thunar
 noto-fonts
+blueman

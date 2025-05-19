@@ -1,0 +1,32 @@
+#!/bin/bash
+swaylock \
+  --clock \
+  --indicator \
+  --indicator-radius 100 \
+  --indicator-thickness 0 \
+  --ring-color 000000 \
+  --ring-clear-color 000000 \
+  --ring-caps-lock-color 000000 \
+  --ring-ver-color 000000 \
+  --ring-wrong-color 000000 \
+  --inside-color 000000 \
+  --inside-clear-color 000000 \
+  --inside-caps-lock-color 000000 \
+  --inside-ver-color 000000 \
+  --inside-wrong-color 000000 \
+  --line-color 000000 \
+  --line-clear-color 000000 \
+  --line-caps-lock-color 000000 \
+  --line-ver-color 000000 \
+  --line-wrong-color 000000 \
+  --separator-color 000000 \
+  --text-color ffffff \
+  --text-clear-color ffffff \
+  --text-caps-lock-color ffffff \
+  --text-ver-color ffffff \
+  --text-wrong-color ffffff \
+  --key-hl-color ffffff \
+  --bs-hl-color ff0000 \
+  --font "Noto Sans Mono" \
+  --font-size 16 \
+  --color 000000
