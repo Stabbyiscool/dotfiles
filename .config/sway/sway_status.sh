@@ -13,10 +13,16 @@ while true; do
     CPU=$(top -bn1 | grep "Cpu(s)" | awk '{printf "%.1f%%", $2 + $4}')
     REC=$(pgrep -x "wf-recorder" > /dev/null && echo "RECORDING!")
 
-    USRTXT=$(curl -s http://192.168.1.44:8252/ | jq -r .latest_text)
-    [ -z "$USRTXT" ] && USRTXT="NAN"
+    USERNAME=$(whoami)
+    if [ "$USERNAME" = "stabosa" ]; then
+        USRTXT=$(curl -s http://192.168.1.44:8252/ | jq -r .latest_text)
+        [ -z "$USRTXT" ] && USRTXT="NAN"
+        TEXT="$USRTXT${REC:+ | $REC} | "
+    else
+        TEXT="${REC:+$REC | }"
+    fi
 
-    echo "$USRTXT${REC:+ | $REC} | $DATE | CPU: $CPU | RAM: $RAM | VOL: $VOL"
+    echo "${TEXT}$DATE | CPU: $CPU | RAM: $RAM | VOL: $VOL"
 
     sleep 1
 done
