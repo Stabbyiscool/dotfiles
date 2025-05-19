@@ -8,8 +8,8 @@ include /etc/sway/config.d/*
 # --------------------------------- Other ---------------------------------
 floating_modifier $mod
 
-default_border pixel 2
-default_floating_border pixel 2
+default_border none
+default_floating_border none
 
 # --------------------------------- Client Colors ---------------------------------
 client.focused          #000000 #000000 #000000 #000000
@@ -44,8 +44,11 @@ exec export XDG_CURRENT_DESKTOP=sway
 exec export XDG_SESSION_TYPE=wayland
 exec export XDG_PORTAL_BACKEND=wlroots
 exec mpvpaper '*' ~/.wallpaper/wall.mp4 --mpv-options="--loop"
-exec bluetoothctl connect 44:73:D6:F8:90:3C
+exec blueman-applet &
 exec swaysome init 1
+exec swayidle \
+    timeout 300 '~/.config/sway/lockscreen.sh' \
+    timeout 600 'systemctl suspend'    
 # --------------------------------- GTK Configuration ---------------------------------
 exec {
     gsettings set org.gtk.Settings.FileChooser window-size '(1000, 500)'
@@ -102,13 +105,13 @@ bindsym $mod+Shift+s exec ~/.config/sway/screenshot.sh
 bindsym $mod+Shift+escape exec "swaymsg exit"
 bindsym $mod+Up exec pamixer --increase 5
 bindsym $mod+Down exec pamixer --decrease 5
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+grave reload
 bindsym $mod+Shift+r exec bash -c 'if pgrep -x "wf-recorder" > /dev/null; then killall wf-recorder; else wf-recorder -g "$(slurp)" -f "/home/$user/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor; fi'
 bindsym $mod+Shift+f exec bash -c 'if pgrep -x "wf-recorder" > /dev/null; then killall wf-recorder; else wf-recorder -g "$(slurp -o)" -f "/home/$user/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor; fi'
 bindsym $mod+r exec wofi --show drun --width 400 --height 500 --location 1 --xoffset 0 --yoffset 0
 bindsym Ctrl+Shift+Alt+Mod4+L exec flatpak run io.github.ungoogled_software.ungoogled_chromium https://www.linkedin.com
-bindsym $mod+Shift+q exec "kill -9 $(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .pid')"
-bindsym $mod+f floating toggle
+bindsym $mod+Shift+c exec "kill -9 $(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .pid')"
+bindsym $mod+v floating toggle
 bindsym $mod+h move scratchpad
 bindsym $mod+i scratchpad show
 bindsym XF86AudioPlay exec playerctl play-pause && notify-send "Media" "Playing"
