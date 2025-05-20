@@ -18,3 +18,4 @@ thunar-archive-plugin
 thunar
 noto-fonts
 blueman
+python-pyqt5
