@@ -27,7 +27,9 @@ def take_screenshot():
     region = subprocess.check_output(["slurp"]).decode().strip()
     subprocess.run(["grim", "-g", region, TEMP_IMAGE])
     freeze.terminate()
+    copy_to_clipboard(TEMP_IMAGE)
     return os.path.exists(TEMP_IMAGE)
+
 
 
 def copy_to_clipboard(path):
