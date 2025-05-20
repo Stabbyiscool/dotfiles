@@ -30,8 +30,6 @@ def take_screenshot():
     copy_to_clipboard(TEMP_IMAGE)
     return os.path.exists(TEMP_IMAGE)
 
-
-
 def copy_to_clipboard(path):
     with open(path, "rb") as f:
         subprocess.run(["wl-copy", "--type", "image/png"], input=f.read())
