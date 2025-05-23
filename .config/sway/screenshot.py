@@ -158,7 +158,17 @@ class BrushEditor(QMainWindow):
         container = QWidget()
         container.setLayout(img_layout)
         container.setStyleSheet("background-color: black; color: white;")
-        self.setCentralWidget(container)
+        border_wrap = QWidget()
+        border_layout = QVBoxLayout(border_wrap)
+        border_layout.setContentsMargins(1, 1, 1, 1)
+        border_layout.addWidget(container)
+
+        border_wrap.setStyleSheet("""
+            background-color: white;
+        """)
+
+        self.setCentralWidget(border_wrap)
+
 
         self.resize(self.pixmap.width() + 100, self.pixmap.height() + 50)
         self.setFixedSize(self.size())
