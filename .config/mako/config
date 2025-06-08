@@ -1,0 +1,10 @@
+background-color=#000000
+text-color=#FFFFFF
+border-size=0
+border-radius=0
+padding=10
+margin=10
+default-timeout=5000
+anchor=top-right
+width=300
+height=100

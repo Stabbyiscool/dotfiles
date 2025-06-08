@@ -17,3 +17,5 @@
 !.config/neofetch/*
 !.config/wofi/
 !.config/wofi/*
+!.config/mako
+!.config/mako/*

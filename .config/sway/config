@@ -34,6 +34,9 @@ bar {
     }
     status_command ~/.config/sway/sway_status.sh
     mode dock
+    output DP-1
+    output DP-2
+    output DP-3
 }
 
 # --------------------------------- Startup Commands ---------------------------------
@@ -60,13 +63,13 @@ exec {
 }
 
 # --------------------------------- Output Configuration ---------------------------------
-output "UGD Artist15.6Pro 20200316" pos 0 0 res 1920x1080
-output "Acer Technologies KA242Y 0x02411605" pos 1920 0 res 1920x1080
-output "Acer Technologies R240HY 1224090C42421" pos 3840 0 res 1920x1080
-
+output "DP-1" pos -1920 0 res 1920x1080 
+output "DP-2" pos 0 0 res 1920x1080
+output "DP-3" pos 1920 0 res 1920x1080
+output "HDMI-A-1" pos -3840 0 res 1920x1080
 # --------------------------------- Input Configuration ---------------------------------
 input "10429:2317:UGTABLET_15.6_inch_PenDisplay_Stylus" {
-    map_to_output HDMI-A-1
+    map_to_output DP-3
     drag disabled
 }
 
@@ -103,12 +106,12 @@ bindsym $mod+Shift+0 exec swaysome move 10
 bindsym $mod+Q exec kitty
 bindsym $mod+c kill
 bindsym $mod+Shift+s exec ~/.config/sway/screenshot.py
-bindsym $mod+Shift+escape exec "swaymsg exit"
+bindsym $mod+Shift+escape exec swaymsg exit
 bindsym $mod+Up exec pamixer --increase 5
 bindsym $mod+Down exec pamixer --decrease 5
 bindsym $mod+Shift+grave reload
-bindsym $mod+Shift+r exec bash -c 'if pgrep -x "wf-recorder" > /dev/null; then killall wf-recorder; else wf-recorder -g "$(slurp)" -f "/home/$user/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor; fi'
-bindsym $mod+Shift+f exec bash -c 'if pgrep -x "wf-recorder" > /dev/null; then killall wf-recorder; else wf-recorder -g "$(slurp -o)" -f "/home/$user/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor; fi'
+bindsym $mod+Shift+r exec ~/.config/sway/record.sh
+bindsym $mod+Shift+f exec ~/.config/sway/record.sh -o
 bindsym $mod+r exec wofi --show drun --width 400 --height 500 --location 1 --xoffset 0 --yoffset 0
 bindsym Ctrl+Shift+Alt+Mod4+L exec flatpak run io.github.ungoogled_software.ungoogled_chromium https://www.linkedin.com
 bindsym $mod+Shift+c exec "kill -9 $(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .pid')"
