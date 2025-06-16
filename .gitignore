@@ -19,3 +19,4 @@
 !.config/wofi/*
 !.config/mako
 !.config/mako/*
+!install.sh
