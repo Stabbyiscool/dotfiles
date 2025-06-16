@@ -29,7 +29,7 @@ bar {
 
         focused_workspace  #000000 #ffffff #000000
         active_workspace   #000000 #ffffff #000000
-        inactive_workspace #ffffff #ffffff #ffffff
+        inactive_workspace #000000 #000000 #ffffff
         urgent_workspace   #ffffff #ffffff #ffffff
     }
     status_command ~/.config/sway/sway_status.sh
@@ -40,8 +40,7 @@ bar {
 }
 
 # --------------------------------- Startup Commands ---------------------------------
-exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
-exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+exec /usr/lib/xdg-desktop-portal -r
 exec_always export GTK_USE_PORTAL=0
 exec export XDG_CURRENT_DESKTOP=sway
 exec export XDG_SESSION_TYPE=wayland
@@ -52,10 +51,8 @@ exec swaysome init 1
 exec swayidle \
     timeout 300 '~/.config/sway/lockscreen.sh' \
     timeout 600 'systemctl suspend'    
-exec sway-audio-idle-inhibit
 # --------------------------------- GTK Configuration ---------------------------------
 exec {
-    gsettings set org.gtk.Settings.FileChooser window-size '(1000, 500)'
     gsettings set org.gnome.desktop.interface gtk-theme 'MonoThemeDark'
     gsettings set org.gnome.desktop.interface.wm.preferences theme 'MonoThemeDark'
     gsettings set org.gnome.desktop.interface cursor-size '24'
