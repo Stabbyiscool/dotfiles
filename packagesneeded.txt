@@ -23,3 +23,4 @@ xdg-desktop-portal-gnome
 xdg-desktop-portal-wlr
 base-devel
 git
+dbus-python

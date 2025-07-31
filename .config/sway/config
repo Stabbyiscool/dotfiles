@@ -34,7 +34,6 @@ bar {
     }
     status_command ~/.config/sway/sway_status.sh
     mode dock
-    output DP-1
     output DP-2
     output DP-3
 }
@@ -47,10 +46,11 @@ exec export XDG_SESSION_TYPE=wayland
 exec export XDG_PORTAL_BACKEND=wlroots
 exec mpvpaper '*' ~/.wallpaper/wall.mp4 --mpv-options="--loop"
 exec blueman-applet &
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec swaysome init 1
-exec swayidle \
-    timeout 300 '~/.config/sway/lockscreen.sh' \
-    timeout 600 'systemctl suspend'    
+# exec swayidle \
+#    timeout 300 '~/.config/sway/lockscreen.sh' \
+#    timeout 600 'systemctl suspend'    
 # --------------------------------- GTK Configuration ---------------------------------
 exec {
     gsettings set org.gnome.desktop.interface gtk-theme 'MonoThemeDark'
@@ -60,19 +60,19 @@ exec {
 }
 
 # --------------------------------- Output Configuration ---------------------------------
-output "DP-1" pos -1920 0 res 1920x1080 
-output "DP-2" pos 0 0 res 1920x1080
 output "DP-3" pos 1920 0 res 1920x1080
-output "HDMI-A-1" pos -3840 0 res 1920x1080
+output "DP-2" pos 0 0 mode 1920x1080
+output "HDMI-A-1" pos -1920 0 res 1920x1080
+
 # --------------------------------- Input Configuration ---------------------------------
-input "10429:2317:UGTABLET_15.6_inch_PenDisplay_Stylus" {
-    map_to_output DP-3
-    drag disabled
-}
 
 input "5426:178:Razer_Razer_DeathAdder_V3" {
     accel_profile flat
     pointer_accel 0.5
+}
+input "10429:2317:UGTABLET_15.6_inch_PenDisplay_Stylus" {
+    map_to_output DP-1
+    drag disabled
 }
 
 # --------------------------------- Workspace Keybindings ---------------------------------
@@ -109,7 +109,7 @@ bindsym $mod+Down exec pamixer --decrease 5
 bindsym $mod+Shift+grave reload
 bindsym $mod+Shift+r exec ~/.config/sway/record.sh
 bindsym $mod+Shift+f exec ~/.config/sway/record.sh -o
-bindsym $mod+r exec wofi --show drun --width 400 --height 500 --location 1 --xoffset 0 --yoffset 0
+bindsym $mod+r exec wofi --show drun --width 400 --height 500 --layer overlay --location 1 --xoffset 0 --yoffset 0
 bindsym Ctrl+Shift+Alt+Mod4+L exec flatpak run io.github.ungoogled_software.ungoogled_chromium https://www.linkedin.com
 bindsym $mod+Shift+c exec "kill -9 $(swaymsg -t get_tree | jq -r '.. | select(.focused?) | .pid')"
 bindsym $mod+v floating toggle

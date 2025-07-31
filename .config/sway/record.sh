@@ -14,6 +14,6 @@ else
     wf-recorder -g "$(slurp $full)" -f "$OGFP" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor &
     REC_PID=$!
     wait $REC_PID
-    ffmpeg -i "$OGFP" -vcodec libx264 -crf 28 -preset fast "${OGFP%.mp4}_comp.mp4"
+    ffmpeg -i "$OGFP" -vf "scale=-2:720" -vcodec libx264 -crf 32 -preset fast "${OGFP%.mp4}_comp720p.mp4"
     rm "$OGFP"
 fi

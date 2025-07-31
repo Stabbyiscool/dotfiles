@@ -1,25 +1,18 @@
 #!/usr/bin/env python3
-import os, sys, tempfile, subprocess
+import os, sys, tempfile, subprocess, time
 from uuid import uuid4
-from PyQt5.QtWidgets import (
-    QApplication,
-    QLabel,
-    QMainWindow,
-    QPushButton,
-    QColorDialog,
-    QVBoxLayout,
-    QWidget,
-    QHBoxLayout,
-    QStyleFactory,
-    QLineEdit,
-)
-from PyQt5.QtGui import QPixmap, QPainter, QPen, QColor, QFontMetricsF, QFont
-from PyQt5.QtCore import Qt, QPoint
-import time
 
-TEMP_DIR = tempfile.gettempdir()
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, \
+     QColorDialog, QVBoxLayout, QWidget, QHBoxLayout, QStyleFactory, QLineEdit
+from PyQt5.QtGui    import QPixmap, QPainter, QPen, QColor, QFontMetricsF, QFont
+from PyQt5.QtCore   import Qt, QPoint, QTimer
+
+import dbus
+from dbus.mainloop.pyqt5 import DBusQtMainLoop
+
+
+TEMP_DIR   = tempfile.gettempdir()
 TEMP_IMAGE = os.path.join(TEMP_DIR, f"screenshot_{uuid4().hex[:8]}.png")
-
 
 def take_screenshot():
     freeze = subprocess.Popen(["wayfreeze"])
@@ -34,9 +27,32 @@ def copy_to_clipboard(path):
     with open(path, "rb") as f:
         subprocess.run(["wl-copy", "--type", "image/png"], input=f.read())
 
+def send_notification_with_action(body: str, image_path: str, on_click):
+    bus  = dbus.SessionBus()
+    obj  = bus.get_object("org.freedesktop.Notifications", "/org/freedesktop/Notifications")
+    api  = dbus.Interface(obj, "org.freedesktop.Notifications")
 
-def notify(msg):
-    subprocess.run(["notify-send", "screenshot", msg])
+    actions = ["default", "Edit"]
+    nid = api.Notify(
+        "screenshot",
+        0,
+        "",
+        "Screenshot taken",
+        body,
+        actions,
+        {},
+        -1
+    )
+
+    def act_cb(nid_from_sig, key):
+        if nid_from_sig == nid and key == "default":
+            on_click()
+
+    bus.add_signal_receiver(
+        act_cb,
+        dbus_interface="org.freedesktop.Notifications",
+        signal_name="ActionInvoked"
+    )
 
 
 class TextBox(QLineEdit):
@@ -113,9 +129,7 @@ class TextBox(QLineEdit):
 class BrushEditor(QMainWindow):
     def __init__(self, image_path):
         super().__init__()
-        self.setWindowFlags(
-            Qt.Window | Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint
-        )
+        self.setWindowFlags(Qt.Window | Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint)
 
         self.image_path = image_path
         self.pixmap = QPixmap(self.image_path)
@@ -137,9 +151,7 @@ class BrushEditor(QMainWindow):
         self.color_btn = QPushButton("clr")
         for btn in [self.brush_btn, self.text_btn, self.color_btn]:
             btn.setFixedSize(36, 36)
-            btn.setStyleSheet(
-                "background-color: black; color: white; border: 1px solid white;"
-            )
+            btn.setStyleSheet("background-color: black; color: white; border: 1px solid white;")
 
         self.brush_btn.clicked.connect(lambda: self.set_tool("brush"))
         self.text_btn.clicked.connect(lambda: self.set_tool("text"))
@@ -162,14 +174,9 @@ class BrushEditor(QMainWindow):
         border_layout = QVBoxLayout(border_wrap)
         border_layout.setContentsMargins(1, 1, 1, 1)
         border_layout.addWidget(container)
-
-        border_wrap.setStyleSheet("""
-            background-color: white;
-        """)
+        border_wrap.setStyleSheet("background-color: white;")
 
         self.setCentralWidget(border_wrap)
-
-
         self.resize(self.pixmap.width() + 100, self.pixmap.height() + 50)
         self.setFixedSize(self.size())
 
@@ -200,7 +207,7 @@ class BrushEditor(QMainWindow):
             point = self.mapToLabel(e.pos())
             painter = QPainter(self.pixmap)
             if self.tool == "brush":
-                pen = QPen(self.color, self.brush_size, Qt.SolidLine)
+                pen = QPen(self.color, self.brush_size, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin)
                 painter.setPen(pen)
                 painter.drawLine(self.last_point, point)
             painter.end()
@@ -235,21 +242,28 @@ class BrushEditor(QMainWindow):
     def closeEvent(self, event):
         self.pixmap.save(self.image_path, "PNG")
         copy_to_clipboard(self.image_path)
-        notify("screenshot copied to clipboard.")
+        subprocess.run(["notify-send", "screenshot", "Screenshot copied to clipboard."])
         event.accept()
 
 
 def main():
+    DBusQtMainLoop(set_as_default=True)
     app = QApplication(sys.argv)
     app.setStyle(QStyleFactory.create("Fusion"))
-    if not take_screenshot():
-        notify("screenshot canceled.")
-        return
-    image_path = TEMP_IMAGE
-    notify("screenshot taken.")
 
-    editor = BrushEditor(image_path)
-    editor.show()
+    if not take_screenshot():
+        subprocess.run(["notify-send", "screenshot", "Screenshot cancelled."])
+        return
+
+    image_path = TEMP_IMAGE
+
+    def open_editor():
+        editor = BrushEditor(image_path)
+        editor.show()
+
+    send_notification_with_action("Click to edit the screenshot.", image_path, on_click=open_editor)
+
+    QTimer.singleShot(60000, app.quit)
     sys.exit(app.exec_())
 
 
