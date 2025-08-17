@@ -24,6 +24,7 @@ export GTK_THEME=MonoThemeDark
 export RADV_ENABLE_VIDDEC=1
 export EDITOR=nano
 export TERMINAL=kitty
+export PYTHONPATH="$HOME/.pylib:$PYTHONPATH"
 
 export PATH="$HOME/.nimble/bin:$HOME/.local/bin:$PATH"
 
@@ -31,6 +32,8 @@ alias ls='ls --color=auto'
 alias la='ls -la'
 alias g='git'
 alias nano='vim'
+alias vp='python ~/Projects/vpli/vpli.py'
+alias vpd='python ~/Projects/vpli/vpli.py -d'
 
 setopt autocd
 setopt correct
@@ -47,7 +50,3 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

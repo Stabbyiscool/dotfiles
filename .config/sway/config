@@ -44,7 +44,7 @@ exec_always export GTK_USE_PORTAL=0
 exec export XDG_CURRENT_DESKTOP=sway
 exec export XDG_SESSION_TYPE=wayland
 exec export XDG_PORTAL_BACKEND=wlroots
-exec mpvpaper '*' ~/.wallpaper/wall.mp4 --mpv-options="--loop"
+exec_always --no-startup-id swaybg -i ~/.wallpaper/metrowaymaka.png -m fill
 exec blueman-applet &
 exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec swaysome init 1
