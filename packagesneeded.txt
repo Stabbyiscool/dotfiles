@@ -24,3 +24,6 @@ xdg-desktop-portal-wlr
 base-devel
 git
 dbus-python
+wofi
+zsh-autosuggestions
+swaybg

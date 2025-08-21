@@ -40,7 +40,7 @@ while true; do
     VPN_STATUS=$(get_vpn_location)
     TEXT="${REC:+$REC | }${VPN_STATUS:+$VPN_STATUS | }"
 
-    echo "${TEXT}$DATE | CPU: $CPU | RAM: $RAM | VOL: $VOL_PADDED"
+    echo "CPU: $CPU | RAM: $RAM | VOL: $VOL_PADDED| ${TEXT}$DATE"
 
     sleep 1
 done
