@@ -11,7 +11,7 @@ OGFP="/home/$USER/records/$(date +'%Y-%m-%d_%H-%M-%S').mp4"
 if pgrep -x "wf-recorder" > /dev/null; then
     killall wf-recorder
 else
-    wf-recorder -g "$(slurp $full)" -f "$OGFP" --audio=bluez_output.44_73_D6_F8_90_3C.1.monitor &
+    wf-recorder -g "$(slurp $full)" -f "$OGFP"&
     REC_PID=$!
     wait $REC_PID
     ffmpeg -i "$OGFP" -vf "scale=-2:720" -vcodec libx264 -crf 32 -preset fast "${OGFP%.mp4}_comp720p.mp4"

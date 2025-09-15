@@ -9,7 +9,7 @@ include /etc/sway/config.d/*
 floating_modifier $mod
 
 default_border none
-default_floating_border none
+default_floating_border pixel 2
 
 # --------------------------------- Client Colors ---------------------------------
 client.focused          #000000 #000000 #000000 #000000
@@ -47,7 +47,7 @@ exec export XDG_PORTAL_BACKEND=wlroots
 exec_always --no-startup-id swaybg -i ~/.wallpaper/metrowaymaka.png -m fill
 exec blueman-applet &
 exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec swaysome init 1
+exec_always swaysome init 1
 # exec swayidle \
 #    timeout 300 '~/.config/sway/lockscreen.sh' \
 #    timeout 600 'systemctl suspend'    
@@ -100,7 +100,7 @@ bindsym $mod+Shift+9 exec swaysome move 9
 bindsym $mod+Shift+0 exec swaysome move 10
 
 # --------------------------------- Application and Utility Keybindings ---------------------------------
-bindsym $mod+Q exec kitty
+bindsym $mod+Q exec foot
 bindsym $mod+c kill
 bindsym $mod+Shift+s exec ~/.config/sway/screenshot.py
 bindsym $mod+Shift+escape exec swaymsg exit

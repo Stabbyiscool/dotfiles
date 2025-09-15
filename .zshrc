@@ -1,6 +1,6 @@
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source bin/activate 2>/dev/null || true
 ZSH_HIGHLIGHT_STYLES[default]='fg=gray'
 ZSH_HIGHLIGHT_STYLES[command]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[argument]='fg=darkgray'
@@ -47,6 +47,7 @@ bindkey '^[OD' backward-word
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
-
+pyenv shell 3.11.2  

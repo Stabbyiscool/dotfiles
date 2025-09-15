@@ -1,5 +1,5 @@
 sway
-kitty
+foot
 pamixer
 grim
 slurp
