@@ -19,4 +19,6 @@
 !.config/wofi/*
 !.config/mako
 !.config/mako/*
+!.config/foot
+!.config/foot/*
 !install.sh
