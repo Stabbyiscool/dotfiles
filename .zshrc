@@ -1,3 +1,4 @@
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source bin/activate 2>/dev/null || true
@@ -34,6 +35,7 @@ alias g='git'
 alias nano='vim'
 alias vp='python ~/Projects/vpli/vpli.py'
 alias vpd='python ~/Projects/vpli/vpli.py -d'
+alias serve='python3 -m http.server'
 
 setopt autocd
 setopt correct
