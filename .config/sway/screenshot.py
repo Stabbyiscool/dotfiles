@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python
 import os, sys, tempfile, subprocess, time
 from uuid import uuid4
 

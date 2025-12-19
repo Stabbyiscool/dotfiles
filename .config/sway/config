@@ -1,24 +1,17 @@
-# --------------------------------- General Configuration ---------------------------------
 set $mod Mod4
 set $user stabosa
-
-# --------------------------------- Load Additional Configuration Files ---------------------------------
-include /etc/sway/config.d/*
-
-# --------------------------------- Other ---------------------------------
+xwayland enable
 floating_modifier $mod
 
 default_border none
 default_floating_border pixel 2
 
-# --------------------------------- Client Colors ---------------------------------
 client.focused          #000000 #000000 #000000 #000000
 client.focused_inactive #000000 #000000 #000000 #000000
 client.unfocused        #000000 #000000 #000000 #000000
 client.urgent           #ffffff #ffffff #ffffff #ffffff
 client.placeholder      #000000 #000000 #000000 #000000
 
-# --------------------------------- Status Bar Configuration ---------------------------------
 bar {
     font pango:Noto Sans Mono 10
     position top
@@ -38,7 +31,6 @@ bar {
     output DP-3
 }
 
-# --------------------------------- Startup Commands ---------------------------------
 exec /usr/lib/xdg-desktop-portal -r
 exec_always export GTK_USE_PORTAL=0
 exec export XDG_CURRENT_DESKTOP=sway
@@ -51,7 +43,6 @@ exec_always swaysome init 1
 exec swayidle \
    timeout 300 '~/.config/sway/lockscreen.sh' \
    timeout 600 'systemctl suspend'    
-# --------------------------------- GTK Configuration ---------------------------------
 exec {
     gsettings set org.gnome.desktop.interface gtk-theme 'MonoThemeDark'
     gsettings set org.gnome.desktop.interface.wm.preferences theme 'MonoThemeDark'
@@ -59,12 +50,10 @@ exec {
     gsettings set org.gnome.desktop.interface font-name 'Noto Sans Mono 10'
 }
 
-# --------------------------------- Output Configuration ---------------------------------
 output "DP-3" pos 1920 0 res 1920x1080
 output "DP-2" pos 0 0 mode 1920x1080
 output "HDMI-A-1" pos -1920 0 res 1920x1080
 
-# --------------------------------- Input Configuration ---------------------------------
 
 input "5426:178:Razer_Razer_DeathAdder_V3" {
     accel_profile flat
@@ -75,7 +64,6 @@ input "10429:2317:UGTABLET_15.6_inch_PenDisplay_Stylus" {
     drag disabled
 }
 
-# --------------------------------- Workspace Keybindings ---------------------------------
 bindsym $mod+1 exec swaysome focus 1
 bindsym $mod+2 exec swaysome focus 2
 bindsym $mod+3 exec swaysome focus 3
@@ -87,7 +75,6 @@ bindsym $mod+8 exec swaysome focus 8
 bindsym $mod+9 exec swaysome focus 9
 bindsym $mod+0 exec swaysome focus 10
 
-# --------------------------------- Move Containers to Workspace ---------------------------------
 bindsym $mod+Shift+1 exec swaysome move 1
 bindsym $mod+Shift+2 exec swaysome move 2
 bindsym $mod+Shift+3 exec swaysome move 3
@@ -99,7 +86,6 @@ bindsym $mod+Shift+8 exec swaysome move 8
 bindsym $mod+Shift+9 exec swaysome move 9
 bindsym $mod+Shift+0 exec swaysome move 10
 
-# --------------------------------- Application and Utility Keybindings ---------------------------------
 bindsym $mod+Q exec foot
 bindsym $mod+c kill
 bindsym $mod+Shift+s exec ~/.config/sway/screenshot.py
