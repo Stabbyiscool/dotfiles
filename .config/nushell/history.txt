@@ -133,3 +133,9 @@ vim ./.gitignore
 nano install.sh
 sudo pacman -S nushell
 vim packagesneeded.txt
+git add .
+git commit -m "hi"
+git push origin main
+cat .config/nushell/env.nu
+cat ./.config/nushell/history.txt
+vim ./.gitignore

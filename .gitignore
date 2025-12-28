@@ -20,7 +20,5 @@
 !.config/mako/*
 !.config/foot
 !.config/foot/*
-!.config/nushell/
-!.config/nushell/*
-
+!.config/nushell/config.nu
 !install.sh
