@@ -13,7 +13,6 @@ procps-ng
 neofetch
 darkman
 xpad
-zsh-syntax-highlighting
 thunar-archive-plugin
 thunar
 noto-fonts
@@ -25,5 +24,5 @@ base-devel
 git
 dbus-python
 wofi
-zsh-autosuggestions
+nushell
 swaybg

@@ -50,8 +50,8 @@ exec {
     gsettings set org.gnome.desktop.interface font-name 'Noto Sans Mono 10'
 }
 
-output "DP-3" pos 1920 0 res 1920x1080
-output "DP-2" pos 0 0 mode 1920x1080
+output "DP-2" pos 1920 0 res 1920x1080
+output "DP-3" pos 0 0 mode 1920x1080
 output "HDMI-A-1" pos -1920 0 res 1920x1080
 
 

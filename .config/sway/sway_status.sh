@@ -57,9 +57,9 @@ while true; do
 
     VPN_STATUS=$(get_vpn_location)
     BATTERY_STATUS=$(get_battery_status)
-    TEXT="${REC:+$REC | }${VPN_STATUS:+$VPN_STATUS | }${BATTERY_STATUS:+$BATTERY_STATUS | }"
+    TEXT="${REC:+$REC / }${VPN_STATUS:+$VPN_STATUS / }${BATTERY_STATUS:+$BATTERY_STATUS / }"
 
-    echo "CPU: $CPU | RAM: $RAM | VOL: $VOL_PADDED| ${TEXT}$DATE"
+    echo "CPU: $CPU / RAM: $RAM / VOL: $VOL_PADDED/ ${TEXT}$DATE"
 
     sleep 1
 done

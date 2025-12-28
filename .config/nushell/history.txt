@@ -1,0 +1,135 @@
+neofetch 
+nufetch
+cat da.png
+wsa
+fs
+ls
+ls -a
+cat hi.txt
+ls -a
+./.config/nushell/config.nu
+im ./.config/nushell/config.nu
+vim ./.config/nushell/config.nu
+PS1='%F{white}%n@%m%f<\n>%F{white}%~%f\$ '
+PS1='%F{white}%n@%m%f%F{white}%~%f\$ '
+PS1='%F{white}%n@%m%f<\n>%F{white}%~%f\$ '
+source ./.zshrc
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '<\n><\n>
+$env.ps1='%F{white}%n@%m%f<\n>%F{white}%~%f\$ '
+$env.PS1='%F{white}%n@%m%f<\n>%F{white}%~%f\$ '
+$env.PROMPT_COMMAND_RIGHT = ""
+$env.PROMPT_COMMAND_RIGHT = "hi"
+$env.PROMPT_COMMAND = '%F{white}%n@%m%f<\n>%F{white}%~%f\$ '
+$env.PROMPT_COMMAND = "hi"
+chsh
+chsh /bin/nu 
+chsh /bin/nu
+/bin/su
+chsh nu
+cat /mnt/storg/erm.txt
+cat ./.zshrc
+$env.PROMPT_COMMAND = {<\n>    let user = (whoami)<\n>    let host = (sys host | get hostname)<\n>    let cwd  = (pwd)<\n><\n>    $"(ansi white)($user)@($host)(ansi reset)\n(ansi white)($cwd)(ansi reset)"<\n>}<\n><\n>$env.PROMPT_INDICATOR = { "$ " }<\n>$env.PROMPT_INDICATOR_VI_INSERT = { "$ " }<\n>$env.PROMPT_INDICATOR_VI_NORMAL = { "> " }<\n>
+ls
+cd ..
+$env.PROMPT_COMMAND = {<\n>    let user = (whoami)<\n>    let host = (sys host | get hostname)<\n>    let cwd  = ($env.PWD | path expand | str replace $env.HOME "~")<\n><\n>    $"(ansi white)($user)@($host)(ansi reset)\n(ansi white)($cwd)(ansi reset)"<\n>}<\n>
+$env.PROMPT_COMMAND = {<\n>    let user = (whoami)<\n>    let host = (sys host | get hostname)<\n>    let cwd  = ($env.PWD | path expand | str replace $env.HOME "~")<\n><\n>    $"(ansi white)($user)@($host)(ansi reset)\n(ansi white)($cwd)(ansi reset)"<\n>}<\n><\n># Force prompt symbol color<\n>$env.PROMPT_INDICATOR = { "(ansi white)$ (ansi reset)" }<\n>$env.PROMPT_INDICATOR_VI_INSERT = { "(ansi white)$ (ansi reset)" }<\n>$env.PROMPT_INDICATOR_VI_NORMAL = { "(ansi white)$ (ansi reset)" }<\n>
+# left prompt content (username@host + cwd)<\n>$env.PROMPT_COMMAND = {<\n>  let user = (whoami)<\n>  let host = (sys host | get hostname)<\n>  let cwd  = ($env.PWD | path expand | str replace $env.HOME "~")<\n><\n>  $"(ansi white)($user)@($host)\n($cwd)(ansi reset)"<\n>}<\n><\n># make the indicator text also white<\n>$env.PROMPT_INDICATOR = "(ansi white)$ (ansi reset)"<\n>$env.PROMPT_INDICATOR_VI_INSERT = "(ansi white)$ (ansi reset)"<\n>$env.PROMPT_INDICATOR_VI_NORMAL = "(ansi white)$ (ansi reset)"<\n>
+$env.PROMPT_COMMAND = {<\n>  let user = (whoami)<\n>  let host = (sys host | get hostname)<\n>  let cwd  = ($env.PWD | path expand | str replace $env.HOME "~")<\n><\n>  $"(ansi white)($user)@($host)\n(ansi white)($cwd)(ansi reset)"<\n>}<\n><\n>$env.PROMPT_INDICATOR = { $"(ansi white)$ (ansi reset)" }<\n>$env.PROMPT_INDICATOR_VI_INSERT = { $"(ansi white)$ (ansi reset)" }<\n>$env.PROMPT_INDICATOR_VI_NORMAL = { $"(ansi white)$ (ansi reset)" }<\n>
+ls
+$env.PROMPT_COMMAND_RIGHT = { "" }<\n>
+ls
+neofetch 
+vim ./.config/nushell/config.nu
+neofetch 
+vim ./.config/nushell/config.nu
+neofetch
+ls 
+ls -a 
+vim ./.config/nushell/config.nu
+locale -a
+sudo locale-gen en_US.UTF-8
+neofetch 
+sudo pacman -S thonny
+yay -S thonny
+sudo usermod -a -G uucp stabosa
+reboot
+ssh 192.168.1.201
+ssh 192.168.1.206
+ssh 192.168.1.214
+ssh 192.168.1.217
+ssh 192.168.1.225
+ssh 192.168.1.110
+ssh 192.168.1.85
+ssh 192.168.1.77
+ssh 192.168.1.52
+ssh 192.168.1.161
+sudo pacman -S wireshark
+sudo pacman -S wireshark-gtk<\n>
+sudo pacman -Sy<\n>
+yay -S wireshark-gtk<\n>
+yay -S wireshark<\n>
+cat /mnt/storg/erm.txt
+sudo pacman -S nethogs<\n>
+sudo systemctl stop wg
+neofetch 
+./gradlew runclient
+mkdir ./Projects/alturn
+thunar
+sudo systemctl start wg
+lsblk
+sudo mkidr /tmp/awesome
+sudo mkdir /tmp/awesome
+sudo mount /dev/sdc1 /tmp/awesome
+cd /tmp/awesome
+ls
+vim ./.config/sway/config
+pkill swayidle
+cat ./.config/nushell/config.nu
+cwd
+user
+curl ip.me
+cat /mnt/storg/erm.txt
+sudo systemctl stop wg
+nmcli
+nmcli d
+sudo reboot
+pkill swayidle
+flatpak list
+flatpak search bamboo
+flatpak install flathub com.bambulab.BambuStudio
+flatpak run flathub com.bambulab.BambuStudio
+flatpak run com.bambulab.BambuStudio
+env GDK_BACKEND=x11 bambu-studio<\n>
+flatpak run --env=GDK_BACKEND=x11 --env=GTK_CSD=0 com.bambulab.BambuStudio<\n>
+flatpak override --user \<\n>  --nosocket=wayland \<\n>  --socket=x11 \<\n>  --env=GDK_BACKEND=x11 \<\n>  --env=GTK_CSD=0 \<\n>  com.bambulab.BambuStudio<\n>
+flatpak run --env=GDK_BACKEND=x11 --env=GTK_CSD=0 com.bambulab.BambuStudioflatpak override --user --nosocket=wayland --socket=x11 --env=GDK_BACKEND=x11 --env=GTK_CSD=0 com.bambulab.BambuStudio<\n><\n>
+flatpak override --user --nosocket=wayland --socket=x11 --env=GDK_BACKEND=x11 --env=GTK_CSD=0 com.bambulab.BambuStudio<\n>
+flatpak run --env=GDK_BACKEND=x11 --env=GTK_CSD=0 com.bambulab.BambuStudio<\n>
+sudo pacman -S plasma-desktop plasma-workspace kde-system-meta<\n>
+reboot
+startplasma-wayland
+sudo pacman -S hyprland
+flatpak 
+flatpak run c
+flatpak run com.bambulab.BambuStudio
+logout
+exit
+hyprland
+flatpak run com.bambulab.BambuStudio
+cat /mnt/storg/erm.txt
+cat ./.config/sway/config
+flatpak run com.bambulab.BambuStudio
+cat /mnt/storg/erm.txt
+rm /mnt/storg/erm.txt
+flatpak run com.bambulab.BambuStudio
+ls
+`Video (online-video-cutter.com).mp4`
+ls
+vim flowing_fluids.json
+neofetch 
+vim ./.config/sway/sway_status.sh
+neofetch 
+vim ./.gitignore
+nano install.sh
+sudo pacman -S nushell
+vim packagesneeded.txt

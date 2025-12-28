@@ -1,6 +1,5 @@
 *
 
-!.zshrc
 
 !.config/
 .config/*
@@ -21,4 +20,7 @@
 !.config/mako/*
 !.config/foot
 !.config/foot/*
+!.config/nushell/
+!.config/nushell/*
+
 !install.sh
